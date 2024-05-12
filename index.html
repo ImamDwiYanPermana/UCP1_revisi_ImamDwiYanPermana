@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- boodstrap icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lemon&family=Poppins:ital@0;1&family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stayle CSS -->
+    <title>PDW</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <header class="navbar w-100">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary container-fluid">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">UCP 1 PDW</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dayin.html">Dy In My life</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="song.html">My Music favorite</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  My hoby
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="film.html">Nonton Film</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="futsal.html">Futsall</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="fotografer.html"
+                      >Fotografer</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="home" id="home">
+      <div class="container">
+        <div class="text">
+          <h1>Imam <span>Dwi Yan </span> Permana</h1>
+          <p>20220140086</p>
+          <button
+            onclick="showAlert()"
+            type="button"
+            class="btn btn-outline-secondary"
+          >
+            Semangat
+          </button>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="text-white text-center pb-5"
+      style="background-color: #00b3b3"
+    >
+      <p>
+        Created with Love <i class="bi bi-balloon-heart-fill text-danger"></i>
+        <a href="https://instagram.com/imamdwyp/" class="text-white fw-bold"
+          >Imam Dwi Yan Permana</a
+        >
+      </p>
+      <p id="greeting"></p>
+      <p id="date-time">&copy;</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      // Fungsi untuk mengupdate waktu secara real-time
+      function updateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Format waktu
+        var timeString =
+          ("0" + hours).slice(-2) +
+          ":" +
+          ("0" + minutes).slice(-2) +
+          ":" +
+          ("0" + seconds).slice(-2);
+
+        // Menampilkan waktu di halaman
+        document.getElementById("date-time").textContent = timeString;
+      }
+
+      // Memanggil fungsi updateTime setiap detik
+      setInterval(updateTime, 1000);
+
+      // Fungsi untuk memberikan salam dan tanggal
+      function updateTimeAndGreeting() {
+        var now = new Date();
+        var days = [
+          "Minggu",
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat",
+          "Sabtu",
+        ];
+        var dayOfWeek = days[now.getDay()];
+        var hours = now.getHours();
+        var greeting = "";
+
+        // Mendefinisikan salam berdasarkan waktu
+        if (hours < 12) {
+          greeting = "Selamat pagi!";
+        } else if (hours < 18) {
+          greeting = "Selamat siang!";
+        } else {
+          greeting = "Selamat malam!";
+        }
+
+        // Format tanggal
+        var dateOptions = { year: "numeric", month: "long", day: "numeric" };
+        var dateString = now.toLocaleDateString("en-US", dateOptions);
+
+        // Menampilkan salam dan tanggal di halaman
+        document.getElementById("greeting").textContent =
+          greeting + " Hari ini adalah " + dayOfWeek + ",";
+      }
+
+      // Memanggil fungsi updateTimeAndGreeting untuk pertama kalinya saat halaman dimuat
+      updateTimeAndGreeting();
+    </script>
+  </body>
+</html>
+
+<!-- pdw2024 -->
